@@ -112,3 +112,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+bbs/log.txt
+bbs/.idea/vcs.xml
+bbs/.idea/workspace.xml
