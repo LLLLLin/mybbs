@@ -38,13 +38,14 @@ def index():
 
 @main.route('/login', methods=['POST'])
 def login():
-    log('debug', request.path)
     form = request.form
     user = User.validate_login(form)
     if user is not None:
+        log('LOG debug', request.path)
         session['user_id'] = user.id
         return redirect(url_for('topic.topic_index'))
     else:
+        log('LOG debug', request.path)
         return redirect(url_for('.index'))
 @main.route('/register', methods=['GET','POST'])
 def register():
