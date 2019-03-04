@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     config ={
         'debug': True,
-        'host' : 'localhost',
+        'host' : '0.0.0.0',
         'port': 3000,
     }
     app.run(**config)
