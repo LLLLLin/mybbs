@@ -1,0 +1,53 @@
+Model 所有数据类型基类
+
+user 用户数据类:
+    属性:
+        id
+        username
+        password
+        user_img
+    方法:
+        salted_password  密码加盐
+        register 注册检测
+        validate_login 登陆检测
+topic 文章数据类
+    属性:
+        id
+        views 访问量
+        title   标题
+        content 内容
+        cter
+        ct
+        ut
+        user_id
+     方法:
+        replies 读取当前文章下所有评论
+reply 回复数据类
+    属性:
+        id
+        content
+        ct
+        ut
+        topic_id
+    方法:
+        user 读取该评论所属用户
+Board 板块类
+    属性：
+        id
+        title
+        ct
+        ut
+
+mail 私信类：
+
+    属性：
+        id
+        content
+        title
+        ct
+        read
+        sender_id
+        receiver_id
+    方法：
+        set_sender 设置发送目标
+        mark_read 将私信置为已读

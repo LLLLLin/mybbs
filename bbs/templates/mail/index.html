@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my bbs</title>
+</head>
+<body>
+<p>发送邮件</p>
+<form action="{{url_for(.add)}}" method="POST">
+    <input type="text" name="title" placeholder="title">
+    <input type="text" name="content" placeholder="content">
+    <input type="text" name="receiver" placeholer="receiver">
+    <button>提交邮件</button>
+</form>
+<p>收到邮件</p>
+{% for r in receivers%}
+    <div>
+        <a href="{{url_for(".view",id = r.id)}}> {{r.title}}"</div>
+    </div>
+{%endfor%}
+<p>发送邮件</p>
+{%for s in sends%}
+    <div>
+        <a href ={{url_for(".view", id="s.id")>{{s.title}}</a>
+    </div>
+{%endfor%}
+
+
+</body>
+</html>

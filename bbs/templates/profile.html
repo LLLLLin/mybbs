@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my bbs</title>
+
+</head>
+<body>
+    <div>
+        <div>
+            <label>name:</label>
+            <span>{{user.username}}</span>
+        </div>
+        <div>
+            <label>id:</label>
+            <span>{{user.id}}</span>
+        </div>
+        <div>
+            <label>password:</label>
+            <span>{{user.password}}</span>
+        </div>
+    </div>
+    <div>
+        <title>Upload new File</title>
+        <form method="POST" action="{{url_for('.add_img')}}" enctype="multipart/form-data">
+            <input type="file" name="user_img">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</body>
+</html>
