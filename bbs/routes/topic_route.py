@@ -47,6 +47,7 @@ def topic_add():
     u = current_user()
     form = request.form
     topic = Topic.new(form,user_id=u.id)
+    topic.save()
     return redirect(url_for('.topic_detail',id = topic.id))
 #TODO:管理员才能访问
 @main.route('/delete')

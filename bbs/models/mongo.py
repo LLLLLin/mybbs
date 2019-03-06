@@ -60,7 +60,7 @@ class Mongo:
         m.ct = ts
         m.ut = ts
         m.type = name.lower()
-        m.save()
+       # m.save()
         return m
 
 

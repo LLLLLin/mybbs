@@ -18,4 +18,5 @@ def reply_add():
     u = current_user()
     m = Reply.new(form)
     m.set_user_id(u.id)
+    m.save()
     return redirect(url_for('topic.topic_detail' ,id = m.topic_id))

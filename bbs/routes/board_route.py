@@ -20,4 +20,5 @@ def board_index():
 def add_board():
     form = request.form
     b = Board.new(form)
+    b.save()
     return redirect(url_for('topic.topic_index'))
