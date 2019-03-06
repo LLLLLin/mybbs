@@ -1,25 +1,20 @@
+import os
+
 from flask import (
-        Blueprint,
-        url_for,
-        render_template,
-        redirect,
-        request,
-        session,
-        send_from_directory,
+    Blueprint,
+    url_for,
+    render_template,
+    redirect,
+    request,
+    send_from_directory,
 )
-
-from routes import *
-
-
-from utils import (log,
-                    user_img_director,
-                   )
+from werkzeug.utils import secure_filename
 
 from models.user import User
-import os
-from  werkzeug.utils import secure_filename
-
-
+from routes import *
+from utils import (log,
+                   user_img_director,
+                   )
 
 main = Blueprint('index',__name__)
 
@@ -36,17 +31,20 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/login', methods=['POST'])
+@main.route('/login', methods=['POST','GET'])
 def login():
-    form = request.form
-    user = User.validate_login(form)
-    if user is not None:
-        log('LOG debug', request.path)
-        session['user_id'] = user.id
-        return redirect(url_for('topic.topic_index'))
+    if request.method == 'POST':
+        form = request.form
+        user = User.validate_login(form)
+        if user is not None:
+            log('LOG debug', request.path)
+            session['user_id'] = user.id
+            return redirect(url_for('topic.topic_index'))
+        else:
+            log('LOG debug', request.path)
+            return redirect(url_for('.index'))
     else:
-        log('LOG debug', request.path)
-        return redirect(url_for('.index'))
+        return render_template('/login.html')
 @main.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
