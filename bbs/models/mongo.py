@@ -81,7 +81,12 @@ class Mongo:
     @classmethod
     def find(cls,id):
         return cls.find_by(id=id)
-
+    @classmethod
+    def delete(cls,**kwargs):
+        log('debug delete', kwargs)
+        name = cls.__name__
+        dele = mongo.db[name].delete_one(kwargs)
+        return dele
     @classmethod
     def upsert(cls,query_form,update_form,hard = False):
         ms = cls.find_by(**query_form)

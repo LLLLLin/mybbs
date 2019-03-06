@@ -54,8 +54,8 @@ def topic_add():
 def topic_delete():
     query = request.args
     topic_id = query.get('id', -1)
-    topic = Topic.delete(id = topic_id)
-    return redirect(url_for('.topic.index'))
+    topic = Topic.delete(id = int(topic_id))
+    return redirect(url_for('.topic_index'))
 
 @main.route('/new')
 def topic_new():
