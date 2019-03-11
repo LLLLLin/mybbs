@@ -37,7 +37,7 @@ def topic_index():
             log('debug', tops)
         boards = Board.all()
         # log('debug',tops[0].user().user_img)
-        return render_template('topic/index.html', bs=boards, ms=tops)
+        return render_template('topic/index.html', bs=boards, ms=tops, u = u)
 
 @main.route('/<int:id>')
 def topic_detail(id):

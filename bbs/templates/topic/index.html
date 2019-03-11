@@ -17,14 +17,15 @@
 <div class='navbar'>
     <div class='navbar-inner'>
         <div class='container'>
-            <a class='brand' href='/'>
 
-                <img src="//static2.cnodejs.org/public/images/cnodejs_light.svg"/>
+            <ul class='nav pull-right'>
+                <li><a href={{url_for('topic.topic_index')}}>首页</a></li>
+                <li><a href={{url_for('mail.mail_index')}}>我的消息</a></li>
+                <li><a href='/profile'>个人主页</a></li>
 
-            </a>
-
-            <form id='search_form' class='navbar-search' action="/search">
-                <input type='text' id='q' name='q' class='search-query span3' value=''/>
+            </ul>
+            <form id='search_form' class='navbar-search' action="http://www.baidu.com/s">
+                <input type='text' id='q' name='wd' class='search-query span3' value=''/>
             </form>
 
             <a class="btn btn-navbar" id="responsive-sidebar-trigger">

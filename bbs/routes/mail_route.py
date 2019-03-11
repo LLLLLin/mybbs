@@ -15,7 +15,7 @@ main = Blueprint('mail',__name__)
 def mail_index():
     u = current_user()
     send_mail = Mail.find_all(sender_id = u.id)
-    received_mail = Mail.find(receiver_id = u.id)
+    received_mail = Mail.find_all(receiver_id = u.id)
     return render_template('mail/index.html', sends = send_mail, receives = received_mail)
 
 @main.route('/<int:id>')
@@ -31,7 +31,9 @@ def mail_view(id):
 @main.route('/add', methods=['POST'])
 def mail_add():
     form = request.form
-    mail = Mail.new(form)
+    receiver = form.get('receiver','')
+    u =User.find_by(username = receiver)
+    mail = Mail.new(form,receiver_id = u.id)
     mail.set_sender(current_user().id)
     mail.save()
     return redirect(url_for('.mail_index'))
